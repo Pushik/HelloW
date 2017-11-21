@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Net;
 using System.IO;
+using Newtonsoft.Json;
+
+
+
 
 	
 namespace Wex
@@ -10,21 +14,24 @@ namespace Wex
         static void Main(string[] args)
         {
             Console.WriteLine("Курс валюты с Wex");
-            String Url = "https://wex.nz/api/3/btc_usd";
+          //  String Url = "https://wex.nz/api/3/btc_usd";
             
-            WebRequest wrGETURL;
-            wrGETURL = WebRequest.Create(Url);
+            WebRequest wrGETURL = WebRequest.Create("https://wex.nz/api/3/btc_usd");
+            
+           // wrGETURL = WebRequest.Create(Url);
             Stream objStream;
             objStream = wrGETURL.GetResponse().GetResponseStream();
             StreamReader objReader = new StreamReader(objStream);
-
-            string sLine = "";
-            sLine = objReader.ReadLine();
-            Console.WriteLine(sLine);
+            Console.WriteLine(objReader.ReadToEnd());
 
 
+            // string sLine = "";
+            // sLine = objReader.ReadLine();
+            // Console.WriteLine(sLine);
 
-            //Console.WriteLine("Введите первое число");
+
+
+            // Console.WriteLine("Введите первое число");
             //string S1 = Console.ReadLine();
             //int a = int.Parse(S1);
 
