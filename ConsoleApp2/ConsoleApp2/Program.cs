@@ -11,10 +11,11 @@ namespace Wex
 {
     public class BTCResult
     {
-        public long High { get; set; }
-        public float Low { get; set; }
-      //  public long Last { get; set; }
-      //  public long Buy { get; set; }
+        public int High { get; set; }
+        public int Low { get; set; }
+        public DateTime CreatedDate { get; set; }
+        //  public long Last { get; set; }
+        //  public long Buy { get; set; }
     }
 
     class Wex
@@ -32,17 +33,15 @@ namespace Wex
             StreamReader objReader = new StreamReader(objStream);
             Console.WriteLine(objReader.ReadToEnd());
 
-        string json = @"{
-            'High coorse':'High',
-            'Low coorse':'Low',
+        string objReader = @"{
+            'High':'5000',
+            'Low':'5000',
+            'CreatedDate': '2017-11-22T00:00:00Z',
 
         }";
             BTCResult account = JsonConvert.DeserializeObject<BTCResult>(json);
-            double high = account.High;
-            float low = account.Low;
-            Console.WriteLine(high);
-            Console.WriteLine(low);
-
+            Console.WriteLine(account.High);
+           
 
             // string sLine = "";
             // sLine = objReader.ReadLine();
