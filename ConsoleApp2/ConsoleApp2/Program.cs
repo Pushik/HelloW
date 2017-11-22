@@ -9,20 +9,39 @@ using Newtonsoft.Json;
 	
 namespace Wex
 {
+    public class BTCResult
+    {
+        public long High { get; set; }
+        public float Low { get; set; }
+      //  public long Last { get; set; }
+      //  public long Buy { get; set; }
+    }
+
     class Wex
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Курс валюты с Wex");
-          //  String Url = "https://wex.nz/api/3/btc_usd";
-            
-            WebRequest wrGETURL = WebRequest.Create("https://wex.nz/api/3/btc_usd");
+            //  String Url = "https://wex.nz/api/3/ticker/btc_usd";
+
+            WebRequest wrGETURL = WebRequest.Create("https://wex.nz/api/3/ticker/btc_usd");
             
            // wrGETURL = WebRequest.Create(Url);
             Stream objStream;
             objStream = wrGETURL.GetResponse().GetResponseStream();
             StreamReader objReader = new StreamReader(objStream);
             Console.WriteLine(objReader.ReadToEnd());
+
+        string json = @"{
+            'High coorse':'High',
+            'Low coorse':'Low',
+
+        }";
+            BTCResult account = JsonConvert.DeserializeObject<BTCResult>(json);
+            double high = account.High;
+            float low = account.Low;
+            Console.WriteLine(high);
+            Console.WriteLine(low);
 
 
             // string sLine = "";
