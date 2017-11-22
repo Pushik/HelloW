@@ -11,11 +11,10 @@ namespace Wex
 {
     public class BTCResult
     {
-        public int High { get; set; }
-        public int Low { get; set; }
-        public DateTime CreatedDate { get; set; }
-        //  public long Last { get; set; }
-        //  public long Buy { get; set; }
+        public long high { get; set; }
+        public long low { get; set; }
+        public long Last { get; set; }
+        public long Buy { get; set; }
     }
 
     class Wex
@@ -31,22 +30,21 @@ namespace Wex
             Stream objStream;
             objStream = wrGETURL.GetResponse().GetResponseStream();
             StreamReader objReader = new StreamReader(objStream);
-            Console.WriteLine(objReader.ReadToEnd());
+           // Console.WriteLine(objReader.ReadToEnd());
 
-        string objReader = @"{
-            'High':'5000',
+        string json = @"{
+            'btc_usd':'btc_usd',
             'Low':'5000',
-            'CreatedDate': '2017-11-22T00:00:00Z',
+            }";
 
-        }";
-            BTCResult account = JsonConvert.DeserializeObject<BTCResult>(json);
-            Console.WriteLine(account.High);
-           
+            BTCResult account = JsonConvert.DeserializeObject<BTCResult>(objReader.ReadToEnd());
+            Console.WriteLine(account);
+
 
             // string sLine = "";
             // sLine = objReader.ReadLine();
             // Console.WriteLine(sLine);
-
+          //  { "btc_usd":{ "high":8500,"low":8061.279,"avg":8280.6395,"vol":22359135.4628,"vol_cur":2719.18898,"last":8276.581,"buy":8290,"sell":8263.161,"updated":1511341515} }
 
 
             // Console.WriteLine("Введите первое число");
